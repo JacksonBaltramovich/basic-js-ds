@@ -15,19 +15,26 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 class Queue {
 
+  constructor()
+    {
+        this.items = [];
+        this.head = null;
+    }
+
   getUnderlyingList() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    let res = null;
+    for(let i = this.items.length -1; i >= 0; i --) {
+      res = {"value":this.items[i], "next":res};
+    }
+    return res;
   }
 
-  enqueue(/* value */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  enqueue(value) {
+    this.items.push(value);
   }
 
   dequeue() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return this.items.shift();
   }
 }
 
